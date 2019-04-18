@@ -1,0 +1,265 @@
+// Import Vuetify styling
+@require '~vuetify/src/stylus/app.styl'
+
+.application {
+    font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+html {
+    font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    @media screen and (min-width: 514px) {
+        font-size :18px;
+    }
+}
+
+$header-color = #242424;
+$article-max-width = 740px;
+
+a {
+    color: inherit;
+    transition-duration: .3s;
+    &:hover{
+        text-decoration-style: wavy;
+    }
+}
+
+header{
+    max-width: $article-max-width;
+    padding 0 20px;
+    margin 2.5em auto 2.35em auto;
+
+    h1{
+        @media screen and (min-width: 514px) {
+            font-size :calc(1.8em + 23 * ((100vw - 514px) / 686))
+        }
+
+        font-size: 1.8em;
+        font-weight: 800;
+        color: $header-color;
+    }
+
+    span {
+        font-size: 1.25em;
+        color: #535353;
+        font-weight : 500;
+    }
+
+
+}
+
+em {
+	color: #dd4b39;
+	font-style: normal;
+}
+
+.transition-bottom-enter-active {
+		animation: transition-bottom 0.3s ease-in-out;
+}
+.transition-bottom-leave-active {
+	animation: transition-bottom 0.3s ease-in-out reverse;
+}
+@keyframes transition-bottom {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+.transition-top-enter-active {
+		animation: transition-top 0.3s ease-in-out;
+}
+.transition-top-leave-active {
+	animation: transition-top 0.3s ease-in-out reverse;
+}
+.fade-enter-active {
+	animation: fade 0.3s ease-in-out;
+}
+.fade-leave-active {
+	animation: fade 0.3s ease-in-out reverse;
+}
+@keyframes transition-top {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+
+article {
+    font-family: "Lora",'Noto Serif SC',serif;
+
+    & > * {
+        margin  1.1em auto;
+        padding 0 20px;
+        max-width: $article-max-width;
+    }
+
+    h2, h3, h4, h5, h6 {
+        color: $header-color;
+    }
+
+    h2 {
+        margin-top: 42px;
+        font-size 1.5em;
+        font-weight: 800;
+    }
+
+    h3 {
+        font-size:1.3em;
+    }
+
+    h4 {
+        font-size:1.1em;
+    }
+
+    h5 {
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    h6 {
+        font-size: 1em;
+        font-weight: 600;
+        color: #555;
+    }
+
+    p {
+        margin: 1.3em auto;
+        line-height: 1.8;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    ol, ul {
+        list-style-position : inside;
+        line-height: 1.8;
+    }
+    code {
+        padding .3em .1em;
+    }
+
+}
+
+/**
+ * Dracula Theme originally by Zeno Rocha [@zenorocha]
+ * https://draculatheme.com/
+ *
+ * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ */
+
+code[class*="language-"],
+pre[class*="language-"],
+code {
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em auto;
+  overflow: auto;
+  border-radius: 0.3em; }
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"],
+code {
+  background: #282a36; }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal; }
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4; }
+
+.token.punctuation {
+  color: #f8f8f2; }
+
+.namespace {
+  opacity: .7; }
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6; }
+
+.token.boolean,
+.token.number {
+  color: #bd93f9; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50fa7b; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2; }
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #f1fa8c; }
+
+.token.keyword {
+  color: #8be9fd; }
+
+.token.regex,
+.token.important {
+  color: #ffb86c; }
+
+.token.important,
+.token.bold {
+  font-weight: bold; }
+
+.token.italic {
+  font-style: italic; }
+
+.token.entity {
+  cursor: help; }
