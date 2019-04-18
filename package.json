@@ -4,6 +4,9 @@
   "description": "wsq.cool - personal blog powered by yuque",
   "author": "wsq",
   "private": true,
+  "nuxt": {
+    "host": "0.0.0.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
