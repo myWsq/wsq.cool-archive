@@ -40,7 +40,8 @@ export default {
     env: {
         YUQUE_USER_ID: config.yuque.userId,
         YUQUE_REPO_ID: config.yuque.repoId,
-        YUQUE_REPO_SLUG: config.yuque.repoSlug
+        YUQUE_REPO_SLUG: config.yuque.repoSlug,
+        YUQUE_TOKEN: config.yuque.token
     },
 
     /*
@@ -70,7 +71,8 @@ export default {
      */
     axios: {
         // See https://github.com/nuxt-community/axios-module#options
-        proxy: true
+        proxy: true,
+
     },
 
     proxy: {

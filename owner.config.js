@@ -8,6 +8,8 @@ export default {
         userId: 282173,
         /** 知识库id */
         repoId: 272956,
-        repoSlug: 'zer3ye'
+        repoSlug: 'zer3ye',
+        /** 增加API访问限制 */
+        token:'CqQjPUUHMru73fBd0q7fGB3BTKbvSiDxRS20Kv8P'
     }
 }

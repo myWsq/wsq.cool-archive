@@ -39,8 +39,14 @@
 			transition-duration: 0.3s;
 		}
 
+
+
 		h1 {
-			font-size: 1.5em;
+            @media screen and (min-width: 514px) {
+            font-size :calc(1.3em + 8 * ((100vw - 514px) / 686))
+        }
+
+            font-size: 1.3em;
 			font-family: 'Lora', 'Noto Serif SC', serif;
 			margin-left: 0.5em;
 		}
@@ -69,6 +75,7 @@
 	nav {
 		.v-btn {
 			padding: 0;
+            margin: 0;
 		}
 	}
 </style>
