@@ -38,7 +38,7 @@
 <style lang="stylus" scoped>
 	article {
 		img {
-			max-width: 740px !important;
+			max-width: 740px;
 			display: block;
 			margin: 0 auto;
 		}
