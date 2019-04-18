@@ -17,7 +17,7 @@ export const mutations = {
 
 export const actions = {
     async nuxtServerInit({dispatch}) {
-        // await dispatch('getMe')
+        await dispatch('getMe')
     },
     async getMe({commit}){
         const {data} = await this.$axios.get(`/yuque/v2/users/${process.env.YUQUE_USER_ID}`)
