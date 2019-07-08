@@ -1,11 +1,51 @@
 <template>
-  <div></div>
+  <div class="flex justify-between px-4 py-4 mx-auto max-w-5xl items-center">
+    <section>
+      <router-link to="/">
+        <span class="logo uppercase text-2xl sm:text-3xl lg:text-4xl"
+          >wsq.cool</span
+        >
+      </router-link>
+    </section>
+    <section>
+      <span>
+        <i
+          class="iconfont icon-search text-lg md:mr-4 cursor-pointer p-3"
+          @click="onSearchButtonClick"
+        ></i>
+      </span>
+      <router-link to="/about" class="uppercase p-3">about</router-link>
+    </section>
+    <search-bar :visable.sync="searchVisable"></search-bar>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-
-export default Vue.extend({});
+import SearchBar from "./SearchBar.vue";
+export default Vue.extend({
+  components: {
+    SearchBar
+  },
+  data() {
+    return {
+      searchVisable: false
+    };
+  },
+  methods: {
+    onSearchButtonClick() {
+      this.searchVisable = true;
+    }
+  }
+});
 </script>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+.logo {
+  font-family: Lora, "Noto Serif SC", serif;
+  font-weight: 500;
+}
+.router-link-exact-active {
+  @apply bg-gray-200 rounded;
+}
+</style>
