@@ -1,11 +1,11 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/">home</router-link>
-      <el-divider direction="vertical"></el-divider>
-      <router-link to="/about">about</router-link>
+    <nav class="uppercase px-4 py-2 mx-auto max-w-5xl">
+      <span class="logo">
+        wsq.cool
+      </span>
     </nav>
-    <main class="sm:w-full px-4 md:w-10/12 lg:w-8/12 mx-auto">
+    <main class="px-4 mx-auto max-w-3xl">
       <router-view></router-view>
     </main>
   </div>
@@ -18,10 +18,9 @@ export default Vue.extend({});
 </script>
 
 <style lang="postcss" scoped>
-nav {
-  @apply my-10 text-center uppercase text-gray-500;
-  .router-link-exact-active {
-    @apply text-orange-500;
-  }
+.logo {
+  @apply text-4xl;
+  font-family: Lora, "Noto Serif SC", serif;
+  font-weight: 500;
 }
 </style>

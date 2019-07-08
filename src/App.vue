@@ -16,10 +16,15 @@ export default Vue.extend({});
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: 18px;
+}
+
 #app {
   @apply text-gray-900 antialiased subpixel-antialiased;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue,
+    Helvetica, Arial, sans-serif;
 }
 
 h1 {
