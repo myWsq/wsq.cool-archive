@@ -4,12 +4,12 @@ import { DocListItem, SearchDocItem, DocDetail } from "./doc.interfaces";
 export class DocService {
   static async getDocs(): Promise<DocListItem[]> {
     const { data } = await AxiosDefault.get(
-      `/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs`
+      `/api/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs`
     );
     return data.data;
   }
   static async searchDocs(q: string): Promise<SearchDocItem[]> {
-    const { data } = await AxiosDefault.get("/zsearch", {
+    const { data } = await AxiosDefault.get("/api/zsearch", {
       params: {
         p: 1,
         q,
@@ -21,7 +21,7 @@ export class DocService {
   }
   static async getDocDetail(id: string): Promise<DocDetail> {
     const { data } = await AxiosDefault.get(
-      `/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs/${id}`
+      `/api/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs/${id}`
     );
     return data.data;
   }
