@@ -1,13 +1,14 @@
 import { AxiosDefault } from "@/plugins/axios";
-import { Doc } from "./doc.interfaces";
+import { DocListItem, SearchDocItem, DocDetail } from "./doc.interfaces";
 
 export class DocService {
-  static getDocs() {
-    return AxiosDefault.get(
+  static async getDocs(): Promise<DocListItem[]> {
+    const { data } = await AxiosDefault.get(
       `/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs`
     );
+    return data.data;
   }
-  static async searchDocs(q: string): Promise<Doc[]> {
+  static async searchDocs(q: string): Promise<SearchDocItem[]> {
     const { data } = await AxiosDefault.get("/zsearch", {
       params: {
         p: 1,
@@ -17,5 +18,11 @@ export class DocService {
       }
     });
     return data.data.hits;
+  }
+  static async getDocDetail(id: string): Promise<DocDetail> {
+    const { data } = await AxiosDefault.get(
+      `/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs/${id}`
+    );
+    return data.data;
   }
 }

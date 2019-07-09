@@ -16,25 +16,22 @@
       </span>
       <router-link to="/about" class="uppercase p-3">about</router-link>
     </section>
-    <search-bar :visable.sync="searchVisable"></search-bar>
+    <search-bar></search-bar>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import SearchBar from "./SearchBar.vue";
+import { CommonStore } from "./common.store";
+import { CommonMutations } from "./common.mutations";
 export default Vue.extend({
   components: {
     SearchBar
   },
-  data() {
-    return {
-      searchVisable: false
-    };
-  },
   methods: {
     onSearchButtonClick() {
-      this.searchVisable = true;
+      CommonStore.commit(CommonMutations.SET_SEARCH_BAR_VISIBLE, true);
     }
   }
 });

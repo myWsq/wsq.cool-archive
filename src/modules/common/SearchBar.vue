@@ -1,6 +1,6 @@
 <template>
   <fade-transition :duration="200">
-    <div v-if="visable" class="search-bar">
+    <div v-if="visible" class="search-bar">
       <slide-y-up-transition group :duration="300">
         <div
           v-if="inputVisible"
@@ -15,11 +15,13 @@
             placeholder="请输入搜索内容"
             @input="searchDebounce"
           />
-          <span class="cursor-pointer uppercase py-2 px-6 border-l"
+          <span
+            class="cursor-pointer uppercase py-2 px-6 border-l"
+            @click="onCancelButtonClick"
             >cancel</span
           >
         </div>
-        <div key="search-result" class="search-result">
+        <div id="search-result" key="search-result">
           <ul class="max-w-4xl mx-auto">
             <li
               v-for="item in list"
@@ -45,26 +47,29 @@ import Vue from "vue";
 import { FadeTransition, SlideYUpTransition } from "vue2-transitions";
 import { DocService } from "../doc/doc.service";
 import { debounce } from "lodash-es";
-import { Doc } from "../doc/doc.interfaces";
+import { SearchDocItem } from "../doc/doc.interfaces";
+import Scrollbar from "perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+import { CommonStore } from "./common.store";
+import { CommonMutations } from "./common.mutations";
+
 export default Vue.extend({
   components: {
     FadeTransition,
     SlideYUpTransition
   },
-  props: {
-    visable: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     return {
       inputVisible: false,
       search: "",
-      list: [] as Doc[]
+      list: [] as SearchDocItem[],
+      resultPs: undefined as (Scrollbar | undefined)
     };
   },
   computed: {
+    visible() {
+      return CommonStore.state.searchBarVisible;
+    },
     searchDebounce() {
       return debounce(() => {
         this.onSearch();
@@ -72,7 +77,8 @@ export default Vue.extend({
     }
   },
   watch: {
-    visable(val) {
+    visible(val) {
+      document.body.style.overflow = val ? "hidden" : "auto";
       setTimeout(() => {
         this.inputVisible = val;
         if (val) {
@@ -84,23 +90,37 @@ export default Vue.extend({
     }
   },
   methods: {
-    onInputBlur() {
+    onCancelButtonClick() {
       this.$nextTick(() => {
-        this.$emit("update:visable", false);
+        CommonStore.commit(CommonMutations.SET_SEARCH_BAR_VISIBLE, false);
+        this.search = "";
+        this.list = [];
+        this.resultPs = undefined;
       });
     },
     async onSearch() {
       if (this.search) {
         this.list = await DocService.searchDocs(this.search);
+        this.$nextTick(() => {
+          this.updateResultPs();
+        });
       }
     },
     onResultClick(slug: string) {
       this.$router.push({
-        path: "/post",
+        name: "post-id",
         params: {
           id: slug
         }
       });
+      this.onCancelButtonClick();
+    },
+    updateResultPs() {
+      if (!this.resultPs) {
+        this.resultPs = new Scrollbar("#search-result");
+      } else {
+        this.resultPs.update();
+      }
     }
   }
 });
@@ -114,7 +134,9 @@ export default Vue.extend({
 input {
   @apply outline-none p-5 px-6  text-xl text-gray-900 bg-transparent text-white;
 }
-.search-result {
+#search-result {
+  @apply relative;
+  height: calc(100vh - 78px);
   color: #efefef;
   & >>> em {
     @apply text-orange-500 not-italic px-2;

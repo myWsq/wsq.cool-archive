@@ -1,18 +1,26 @@
 <template>
   <div>
-    <input-todo-item-add-vue></input-todo-item-add-vue>
-    <list-todo-vue class="mt-4"></list-todo-vue>
+    <doc-list-vue :src="list"></doc-list-vue>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import ListTodoVue from "@/modules/todo/ListTodo.vue";
-import InputTodoItemAddVue from "@/modules/todo/InputTodoItemAdd.vue";
+import DocListVue from "@/modules/doc/DocList.vue";
+import { DocService } from "@/modules/doc/doc.service";
+import { DocListItem } from "@/modules/doc/doc.interfaces";
+
 export default Vue.extend({
   components: {
-    ListTodoVue,
-    InputTodoItemAddVue
+    DocListVue
+  },
+  data() {
+    return {
+      list: undefined as DocListItem[] | undefined
+    };
+  },
+  async created() {
+    this.list = await DocService.getDocs();
   }
 });
 </script>
