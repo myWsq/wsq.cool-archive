@@ -62,6 +62,6 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 @import "../../assets/article.css";
 </style>

@@ -41,6 +41,7 @@ export default Vue.extend({
 /* purgecss start ignore */
 @tailwind base;
 /* purgecss end ignore */
+
 @tailwind components;
 @tailwind utilities;
 

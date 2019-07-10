@@ -12,7 +12,10 @@ module.exports = {
         "element-ui": "ELEMENT"
       };
     }
-    config.externals["prismjs"] = "Prism";
+    config.externals = {
+      ...config.externals,
+      prismjs: "Prism"
+    };
   },
   chainWebpack: config => {
     config.plugin("vue-auto-routing").use(VueAutoRoutingPlugin, [
