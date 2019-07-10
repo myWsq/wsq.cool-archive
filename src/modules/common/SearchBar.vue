@@ -47,7 +47,6 @@ import { DocService } from "../doc/doc.service";
 import { debounce } from "lodash-es";
 import { SearchDocItem } from "../doc/doc.interfaces";
 import Scrollbar from "perfect-scrollbar";
-import "perfect-scrollbar/css/perfect-scrollbar.css";
 import { CommonStore } from "./common.store";
 import { CommonMutations } from "./common.mutations";
 
