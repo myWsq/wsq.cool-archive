@@ -65,7 +65,6 @@ export default Vue.extend({
       if (pager) {
         const pagerRects = pager.$el.getBoundingClientRect();
         this.isPagerInViewport = pagerRects.top < window.innerHeight;
-        console.log(pagerRects.top);
       }
     }
   }
