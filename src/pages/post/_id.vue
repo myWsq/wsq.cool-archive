@@ -19,6 +19,7 @@ import DocDetailVue from "../../modules/doc/DocDetail.vue";
 import DocPagerVue from "../../modules/doc/DocPager.vue";
 import { debounce } from "lodash-es";
 import AppStore, { AppMutations } from "../../store";
+import { DocService } from "../../modules/doc/doc.service";
 
 export default Vue.extend({
   components: {
@@ -48,10 +49,12 @@ export default Vue.extend({
       AppStore.commit(AppMutations.ON_SCROLL_DOWN);
     }
   },
-  created() {
+  async created() {
     window.addEventListener("scroll", this.scrollListener, {
       passive: true
     });
+    const doc = await DocService.getDocDetail(this.id);
+    document.title = doc.title;
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.scrollListener);
