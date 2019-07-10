@@ -6,7 +6,35 @@
 
 <script lang="ts">
 import Vue from "vue";
-export default Vue.extend({});
+import AppStore, { AppMutations } from "./store";
+import { throttle } from "lodash-es";
+export default Vue.extend({
+  computed: {
+    scrollListener() {
+      const OFFSET = 100;
+      let scrollY = 0;
+      return throttle(() => {
+        const curScrollY = window.scrollY;
+        if (scrollY < curScrollY && curScrollY - scrollY >= OFFSET) {
+          if (AppStore.state.isScrollUp) {
+            AppStore.commit(AppMutations.ON_SCROLL_DOWN);
+          }
+          scrollY = window.scrollY;
+        } else if (scrollY > curScrollY && scrollY - curScrollY >= OFFSET) {
+          if (!AppStore.state.isScrollUp) {
+            AppStore.commit(AppMutations.ON_SCROLL_UP);
+          }
+          scrollY = window.scrollY;
+        }
+      }, 100);
+    }
+  },
+  created() {
+    window.addEventListener("scroll", this.scrollListener, {
+      passive: true
+    });
+  }
+});
 </script>
 
 <style lang="postcss">

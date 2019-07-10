@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-between px-4 py-4 mx-auto max-w-5xl items-center">
+  <div
+    class="flex justify-between px-4 py-4 mx-auto max-w-5xl items-center bg-white"
+  >
     <section>
       <router-link to="/">
         <span class="logo uppercase text-2xl sm:text-3xl lg:text-4xl"

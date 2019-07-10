@@ -65,3 +65,14 @@ export interface DocDetail {
   custom_description: string;
   _serializer: string;
 }
+
+export interface DocPager {
+  prev: DocPagerItem;
+  next: DocPagerItem;
+}
+
+export interface DocPagerItem {
+  title: string;
+  slug: string;
+  _serializer: string;
+}

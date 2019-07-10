@@ -58,7 +58,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.doc-list {
+ul {
   font-family: "Lora", "Noto Serif SC", serif;
 }
 </style>

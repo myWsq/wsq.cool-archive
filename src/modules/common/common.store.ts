@@ -15,7 +15,7 @@ export const CommonStore = new Store({
 
 function init() {
   // required
-  AppStore.registerModule("todo", CommonStore);
+  AppStore.registerModule("common", CommonStore);
 }
 
 init();

@@ -10,13 +10,13 @@
           <input
             ref="input"
             v-model="search"
-            class="flex-grow align-middle"
+            class="flex-grow text-sm md:text-xl outline-none p-3 px-4 md:p-4 md:py-6 bg-transparent text-white"
             autofocus
             placeholder="请输入搜索内容"
             @input="searchDebounce"
           />
           <span
-            class="cursor-pointer uppercase py-2 px-6 border-l"
+            class="cursor-pointer uppercase py-2 px-4 border-l text-sm md:text-xl"
             @click="onCancelButtonClick"
             >cancel</span
           >
@@ -43,8 +43,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-// @ts-ignore
-import { FadeTransition, SlideYUpTransition } from "vue2-transitions";
 import { DocService } from "../doc/doc.service";
 import { debounce } from "lodash-es";
 import { SearchDocItem } from "../doc/doc.interfaces";
@@ -54,10 +52,6 @@ import { CommonStore } from "./common.store";
 import { CommonMutations } from "./common.mutations";
 
 export default Vue.extend({
-  components: {
-    FadeTransition,
-    SlideYUpTransition
-  },
   data() {
     return {
       inputVisible: false,
@@ -129,10 +123,8 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .search-bar {
   @apply fixed top-0 left-0 right-0 bottom-0 z-30;
-  background-color: rgba(0, 0, 0, 0.67);
-}
-input {
-  @apply outline-none p-5 px-6  text-xl text-gray-900 bg-transparent text-white;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.67);
 }
 #search-result {
   @apply relative;

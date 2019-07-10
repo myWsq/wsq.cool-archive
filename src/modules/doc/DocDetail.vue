@@ -24,6 +24,11 @@ import { DocService } from "./doc.service";
 import { DocDetail } from "./doc.interfaces";
 import Prism from "prismjs";
 import "prismjs/plugins/autoloader/prism-autoloader";
+import { CommonService } from "@/modules/common/common.service";
+
+Prism.plugins.autoloader.languages_path =
+  "https://cdn.jsdelivr.net/npm/prismjs@1.16.0/components/";
+
 export default Vue.extend({
   props: {
     id: {
@@ -39,20 +44,23 @@ export default Vue.extend({
   watch: {
     id: {
       immediate: true,
-      async handler(val) {
-        this.src = undefined;
-        this.src = await DocService.getDocDetail(this.id);
-        this.$nextTick(() => {
-          Prism.plugins.autoloader.languages_path =
-            "https://cdn.jsdelivr.net/npm/prismjs@1.16.0/components/";
-          const article = this.$refs.article as HTMLElement;
-          const pres = article.getElementsByTagName("pre");
-          Array.from(pres).forEach(item => {
-            item.classList.add("language-" + item.getAttribute("data-lang"));
-            Prism.highlightElement(item);
-          });
-        });
+      handler(val) {
+        this.renderHtml();
       }
+    }
+  },
+  methods: {
+    async renderHtml() {
+      this.src = undefined;
+      this.src = await DocService.getDocDetail(this.id);
+      this.$nextTick(() => {
+        const article = this.$refs.article as HTMLElement;
+        const pres = article.getElementsByTagName("pre");
+        Array.from(pres).forEach(item => {
+          item.classList.add("language-" + item.getAttribute("data-lang"));
+          Prism.highlightElement(item);
+        });
+      });
     }
   }
 });
