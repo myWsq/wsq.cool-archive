@@ -9,10 +9,12 @@ module.exports = {
         vue: "Vue",
         "vue-router": "VueRouter",
         vuex: "Vuex",
-        "element-ui": "ELEMENT",
-        prismjs: "Prism"
+        "element-ui": "ELEMENT"
       };
     }
+    config.externals = {
+      prismjs: "Prism"
+    };
   },
   chainWebpack: config => {
     config.plugin("vue-auto-routing").use(VueAutoRoutingPlugin, [
