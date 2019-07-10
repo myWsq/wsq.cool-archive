@@ -4,7 +4,7 @@
       <figure class="mx-auto">
         <img
           width="500"
-          src="https://ww1.sinaimg.cn/large/006tNc79ly1g4ukfrfqcsj30u00u0dll.jpg"
+          src="https://ipic-1253962968.file.myqcloud.com/2019-07-10-monster-4271569_1280.png"
         />
         <figcaption class="text-gray-500 text-center">
           #95后&nbsp;&nbsp;#前(后?)端工程师&nbsp;&nbsp;#资深铲屎官
