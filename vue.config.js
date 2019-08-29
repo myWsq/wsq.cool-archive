@@ -26,6 +26,7 @@ module.exports = {
     ]);
   },
   devServer: {
+    port: 3000,
     proxy: process.env.VUE_APP_BASE_URL
   },
 
