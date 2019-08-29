@@ -13,7 +13,7 @@
     "core-js": "^2.6.5",
     "dayjs": "^1.8.15",
     "element-ui": "^2.10.0",
-    "lodash-es": "^4.17.11",
+    "lodash-es": "^4.17.14",
     "perfect-scrollbar": "^1.4.0",
     "prismjs": "^1.16.0",
     "vue": "^2.6.10",
