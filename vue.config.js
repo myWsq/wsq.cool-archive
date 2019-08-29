@@ -9,10 +9,13 @@ module.exports = {
         vue: "Vue",
         "vue-router": "VueRouter",
         vuex: "Vuex",
-        "element-ui": "ELEMENT",
-        prismjs: "Prism"
+        "element-ui": "ELEMENT"
       };
     }
+    config.externals = {
+      ...config.externals,
+      prismjs: "Prism"
+    };
   },
   chainWebpack: config => {
     config.plugin("vue-auto-routing").use(VueAutoRoutingPlugin, [
@@ -23,6 +26,7 @@ module.exports = {
     ]);
   },
   devServer: {
+    port: 3000,
     proxy: process.env.VUE_APP_BASE_URL
   },
 

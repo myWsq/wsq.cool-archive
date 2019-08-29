@@ -23,11 +23,7 @@ import Vue from "vue";
 import { DocService } from "./doc.service";
 import { DocDetail } from "./doc.interfaces";
 import Prism from "prismjs";
-import "prismjs/plugins/autoloader/prism-autoloader";
 import { CommonService } from "@/modules/common/common.service";
-
-Prism.plugins.autoloader.languages_path =
-  "https://cdn.jsdelivr.net/npm/prismjs@1.16.0/components/";
 
 export default Vue.extend({
   props: {
@@ -66,6 +62,6 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 @import "../../assets/article.css";
 </style>
