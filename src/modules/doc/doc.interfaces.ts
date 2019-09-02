@@ -1,3 +1,7 @@
+export interface DocStoreState {
+  docList: DocListItem[] | undefined;
+}
+
 export interface DocListItem {
   id: number;
   slug: string;

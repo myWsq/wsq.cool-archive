@@ -1,6 +1,6 @@
 <template>
   <div>
-    <doc-list-vue :src="list"></doc-list-vue>
+    <doc-list-vue :src="docList"></doc-list-vue>
   </div>
 </template>
 
@@ -9,6 +9,7 @@ import Vue from "vue";
 import DocListVue from "@/modules/doc/DocList.vue";
 import { DocService } from "@/modules/doc/doc.service";
 import { DocListItem } from "@/modules/doc/doc.interfaces";
+import "@/modules/doc/doc.store";
 
 export default Vue.extend({
   components: {
@@ -19,8 +20,15 @@ export default Vue.extend({
       list: undefined as DocListItem[] | undefined
     };
   },
+  computed: {
+    docList(): DocListItem[] | undefined {
+      return this.$store.state.doc.docList;
+    }
+  },
   async created() {
-    this.list = await DocService.getDocs();
+    if (!this.docList) {
+      this.$store.commit("doc/setDocList", await DocService.getDocs());
+    }
   }
 });
 </script>
