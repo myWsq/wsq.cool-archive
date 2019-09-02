@@ -22,7 +22,9 @@ export class DocService {
       params: {
         p: 1,
         q,
-        scope: `${process.env.VUE_APP_YUQUE_USER_ID}/${process.env.VUE_APP_YUQUE_REPO_SLUG}`,
+        scope: `${process.env.VUE_APP_YUQUE_USER_ID}/${
+          process.env.VUE_APP_YUQUE_REPO_SLUG
+        }`,
         type: "doc"
       }
     });
@@ -36,6 +38,9 @@ export class DocService {
     const { data } = await AxiosDefault.get(
       `/api/v2/repos/${process.env.VUE_APP_YUQUE_REPO_ID}/docs/${id}`
     );
+    // console.log( data.data.body_html);
+
+    // data.data.body_html = data.data.body_html.replace(/font-size: 14px;/, 'font-size: 16px')
     return data.data;
   }
   static async getPager(id: number | string): Promise<DocPager> {

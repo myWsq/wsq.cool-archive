@@ -49,14 +49,14 @@ export default Vue.extend({
     async renderHtml() {
       this.src = undefined;
       this.src = await DocService.getDocDetail(this.id);
-      this.$nextTick(() => {
-        const article = this.$refs.article as HTMLElement;
-        const pres = article.getElementsByTagName("pre");
-        Array.from(pres).forEach(item => {
-          item.classList.add("language-" + item.getAttribute("data-lang"));
-          Prism.highlightElement(item);
-        });
-      });
+      // this.$nextTick(() => {
+      //   const article = this.$refs.article as HTMLElement;
+      //   const pres = article.getElementsByTagName("pre");
+      //   Array.from(pres).forEach(item => {
+      //     item.classList.add("language-" + item.getAttribute("data-lang"));
+      //     Prism.highlightElement(item);
+      //   });
+      // });
     }
   }
 });
