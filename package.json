@@ -15,7 +15,7 @@
     "element-ui": "^2.10.0",
     "lodash-es": "^4.17.11",
     "perfect-scrollbar": "^1.4.0",
-    "prismjs": "^1.16.0",
+    "prismjs": "^1.24.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vue-router-layout": "^0.1.4",
